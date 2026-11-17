@@ -1,0 +1,14 @@
+{
+  "name": "josephprasadula-plugins",
+  "owner": {
+    "name": "josephprasadula",
+    "url": "https://github.com/josephprasadula"
+  },
+  "plugins": [
+    {
+      "name": "tldr",
+      "source": "./",
+      "description": "Get the short version. Say \"tldr\" to shorten the last reply, summarize text, files or links, or turn on tldr mode for short replies all session."
+    }
+  ]
+}

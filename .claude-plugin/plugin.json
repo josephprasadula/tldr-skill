@@ -1,0 +1,13 @@
+{
+  "name": "tldr",
+  "description": "Get the short version. Say \"tldr\" to shorten the last reply, summarize text, files or links, or turn on tldr mode for short replies all session.",
+  "version": "1.0.0",
+  "author": {
+    "name": "josephprasadula",
+    "url": "https://github.com/josephprasadula"
+  },
+  "homepage": "https://github.com/josephprasadula/tldr-skill",
+  "repository": "https://github.com/josephprasadula/tldr-skill",
+  "license": "MIT",
+  "keywords": ["skill", "tldr", "summary", "concise", "style"]
+}
