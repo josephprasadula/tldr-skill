@@ -1,3 +1,5 @@
+<img src=".claude-plugin/icon.png" width="96" alt="tldr icon">
+
 # tldr
 
 A Claude skill that gives you the short version, at three levels, once or by default.
