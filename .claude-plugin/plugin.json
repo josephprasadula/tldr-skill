@@ -1,7 +1,7 @@
 {
   "name": "tldr",
-  "description": "Get the short version. Say \"tldr\" to shorten the last reply, summarize text, files or links, or turn on tldr mode for short replies all session.",
-  "version": "1.0.0",
+  "description": "Get the short version at min, normal or max. Shorten replies once, per session, or by default."tldr\" to shorten the last reply, summarize text, files or links, or turn on tldr mode for short replies all session.",
+  "version": "1.1.0",
   "author": {
     "name": "josephprasadula",
     "url": "https://github.com/josephprasadula"

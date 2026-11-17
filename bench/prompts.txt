@@ -1,0 +1,10 @@
+What is a git rebase and when should I use it instead of merge?
+Should I use SQLite or Postgres for a small Flask app with about 200 users?
+My React component re-renders in an infinite loop when I call setState inside useEffect. Why, and how do I fix it?
+How do I set up SSH key login for a new Ubuntu server and disable password login?
+Explain how HTTPS keeps my data private, step by step.
+What's the difference between a process and a thread?
+I get "CORS policy: No 'Access-Control-Allow-Origin' header" calling my Express API from a Vite dev server. What should I do?
+Is it safe to run `chmod -R 777 /var/www` to fix a permissions error on my web server?
+Compare Godot and Unity for a solo developer making a 2D rhythm game.
+Summarize the tradeoffs of microservices vs a monolith for a 3-person startup.
