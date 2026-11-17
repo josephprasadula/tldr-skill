@@ -23,21 +23,30 @@ The user wants the short version. There are three levels. Read the matching file
 | `tldr min` / `tldr max` | Same, at that level. |
 | `tldr` + text, file, URL, PR, diff or log | Read it fully, then summarize it at the level given (default `normal`). |
 | `tldr <question>` | Answer the question at `normal`. |
-| `tldr mode [level]` / `tldr on [level]` | Use that level (default `normal`) for every reply for the rest of this session. |
-| `tldr off` / `normal mode` / `full answer` | Turn session mode off. |
-| `explain more` / `details` while a mode is on | Give one full reply, then go back to the mode. |
-| `tldr default <min\|normal\|max>` | Make tldr the default for every new session. See below. |
-| `tldr default off` | Stop using tldr by default. |
-| `tldr status` | Say the current session level and the saved default. |
+| `tldr on [level]` / `/tldr on [level]` | **Save** tldr as the default (level defaults to `normal`) and use it now. Applies to this and every new session. |
+| `tldr off` / `/tldr off` | **Save** tldr as off and stop using it now. |
+| `tldr min` / `normal` / `max` while tldr is on | Switch level and save it. |
+| `tldr mode [level]` | This session only, nothing saved. `tldr mode off` ends it. |
+| `normal mode` / `full answer` | Stop tldr for this session only; the saved default is unchanged. |
+| `explain more` / `details` while tldr is on | Give one full reply, then go back to tldr. |
+| `tldr status` / `/tldr status` | Say the current level and the saved default. |
 
-## Setting the default
+`tldr default <level|off>` is an alias for `tldr on <level>` / `tldr off`.
 
-The default lives in `~/.claude/tldr.json`, for example `{"default": "normal"}`. The tldr plugin's SessionStart hook reads it and loads that level's rules into every new session (and again after the context is compacted).
+## Saving the default
 
-- To set it, write the file with the requested level, e.g. `echo '{"default":"max"}' > ~/.claude/tldr.json`, then switch this session to that level too.
-- To turn it off, write `{"default":"off"}`.
-- Confirm in one line: "tldr default set to max; applies to new sessions."
-- If the skill was installed without the plugin (no hook), say so and offer to add this line to `~/.claude/CLAUDE.md` instead: `Reply using the tldr skill at <level> level unless I ask for detail.`
+The saved default lives in `~/.claude/tldr.json`, e.g. `{"default": "normal"}`. Always change it with the script in this skill's folder, never by hand-writing JSON:
+
+```bash
+bash <this skill's directory>/scripts/set-default.sh <min|normal|max|off|status>
+```
+
+Then:
+- **On / level change:** follow that level's rules from this reply onward.
+- **Off:** reply normally from this reply onward.
+- Confirm in one line, e.g. "tldr on (normal), saved for new sessions." or "tldr off, saved."
+
+The tldr plugin's SessionStart hook reads the file and loads the level's rules into every new session, and again after compaction. If the skill was installed without the plugin (there's no `hooks/` folder next to `skills/`), the saved file has no effect on new sessions. Say so, and offer to add this line to `~/.claude/CLAUDE.md` instead: `Reply using the tldr skill at <level> level unless I ask for detail.`
 
 ## What tldr does not touch
 
