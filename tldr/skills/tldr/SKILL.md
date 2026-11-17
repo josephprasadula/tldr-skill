@@ -35,18 +35,25 @@ The user wants the short version. There are three levels. Read the matching file
 
 ## Saving the default
 
-The saved default lives in `~/.claude/tldr.json`, e.g. `{"default": "normal"}`. Always change it with the script in this skill's folder, never by hand-writing JSON:
+The saved default is a marked block in the user's `~/.claude/CLAUDE.md`, which Claude Code loads into every session and reloads after compaction. Edit only the text between the markers. Leave everything else in that file untouched, and create the file if it doesn't exist.
 
-```bash
-bash <this skill's directory>/scripts/set-default.sh <min|normal|max|off|status>
+**On / level change:** replace the block, or append it if there isn't one, with:
+
+```
+<!-- tldr:start -->
+## tldr: on (<level>)
+Reply in tldr style by default, unless I say "tldr off", change level, or ask for detail. Applies to prose only; code, tool calls, files and commit messages stay full quality.
+<full contents of levels/<level>.md>
+<!-- tldr:end -->
 ```
 
-Then:
-- **On / level change:** follow that level's rules from this reply onward.
-- **Off:** reply normally from this reply onward.
-- Confirm in one line, e.g. "tldr on (normal), saved for new sessions." or "tldr off, saved."
+**Off:** delete the block, markers included.
 
-The tldr plugin's SessionStart hook reads the file and loads the level's rules into every new session, and again after compaction. If the skill was installed without the plugin (there's no `hooks/` folder next to `skills/`), the saved file has no effect on new sessions. Say so, and offer to add this line to `~/.claude/CLAUDE.md` instead: `Reply using the tldr skill at <level> level unless I ask for detail.`
+**Status:** read the block. No block means off.
+
+Then follow the new setting from this reply onward, and confirm in one line, e.g. "tldr on (normal), saved for new sessions." or "tldr off, saved."
+
+On claude.ai there is no CLAUDE.md. Give the user the block text and tell them to paste it into their personal preferences in Settings.
 
 ## What tldr does not touch
 

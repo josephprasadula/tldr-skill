@@ -9,7 +9,7 @@ root=$(cd .. && pwd)
 mkdir -p out cfg
 for l in min normal max; do
   echo "{\"default\":\"$l\"}" > cfg/$l.json
-  CLAUDE_PLUGIN_ROOT=$root TLDR_CONFIG=cfg/$l.json bash "$root/hooks/session-start.sh" > cfg/$l.txt
+  { echo "Reply in tldr style by default, unless I say \"tldr off\", change level, or ask for detail. Applies to prose only; code, tool calls, files and commit messages stay full quality."; cat "$root/tldr/skills/tldr/levels/$l.md"; } > cfg/$l.txt
 done
 
 one() {
