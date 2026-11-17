@@ -1,5 +1,6 @@
 {
   "name": "josephprasadula-plugins",
+  "description": "Claude plugins by josephprasadula: tldr (short replies at min, normal or max).",
   "owner": {
     "name": "josephprasadula",
     "url": "https://github.com/josephprasadula"
